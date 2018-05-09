@@ -1,0 +1,18 @@
+.main-container {
+  position: relative;
+  font-size: 100px;
+  font-family: sans-serif;
+  font-weight: bold;
+  line-height: 1em;
+  height: 1em;
+  overflow-y: hidden;
+}
+
+.number-container {
+  position: absolute;
+  transition: all 5s ease-out;
+}
+
+.is-scrolled {
+  transform: translateY(calc(-100% + 1em));
+}
