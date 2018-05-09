@@ -4,7 +4,8 @@ import './ng-pokie.scss';
 export const NgPokieComponent = {
     template,
     bindings: {
-        value: '<'
+        value: '<',
+        minColumns: '<'
     },
     controller: class NgPokieComponent {
         constructor($scope, $interval) {
@@ -25,17 +26,23 @@ export const NgPokieComponent = {
 
             let numAsString = String(this.value);
 
-            for (let char of numAsString) {
+            let colsAmount;
+            if (!this.minColumns) {
+                colsAmount = numAsString.length;
+            }
+
+            for (let i = 0; i < colsAmount; i++) {
                 let column = {
                     digits: [],
                     isSpun: false
                 };
 
-                let numberIndex = this.minFullSpins * 10 + Number(char);
-                for (let i = 0; i < numberIndex; i++) {
-                    let asStr = String(i);
+                let char = numAsString[i];
+                let numberIndex = this.minFullSpins * 10 + Number(char) + 1;
+                for (let j = 0; j < numberIndex; j++) {
+                    let asStr = String(j);
                     let displayNum = asStr[asStr.length - 1];
-                    column.digits.push(i);
+                    column.digits.push(displayNum);
                 }
 
                 this.digitColumns.push(column);
