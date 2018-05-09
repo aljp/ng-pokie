@@ -1,3 +1,7 @@
 <div class="ng-pokie-container">
-    <span ng-repeat="digit in $ctrl.digits track by $index" ng-bind="digit" class="ng-pokie-digit"></span>
+    <div class="ng-pokie-digit-column-container" ng-repeat="column in $ctrl.digitColumns">
+        <ul class="ng-pokie-digit-column" ng-class="{'is-spun': column.isSpun}">
+            <li ng-repeat="digit in column.digits" ng-bind="digit" class="ng-pokie-digit"></li>
+        </ul>
+    </div>
 </div>

@@ -1,4 +1,5 @@
 import template from './ng-pokie.html';
+import './ng-pokie.scss';
 
 export const NgPokieComponent = {
     template,
@@ -6,27 +7,59 @@ export const NgPokieComponent = {
         value: '<'
     },
     controller: class NgPokieComponent {
-        constructor($scope, $timeout) {
+        constructor($scope, $interval) {
             'ngInject';
 
             this.$scope = $scope;
-            this.$timeout = $timeout;
+            this.$interval = $interval;
 
-            this.digits = [];
+            this.digitColumns = [];
+            this.spinDelay = 300;
+            this.spinningIndex = 0;
+
+            this.minFullSpins = 3;
         }
 
         initDigits() {
-            this.digits.length = 0; // Empty the array
+            this.digitColumns.length = 0; // Empty the array
 
             let numAsString = String(this.value);
 
             for (let char of numAsString) {
-                this.digits.push(char);
+                let column = {
+                    digits: [],
+                    isSpun: false
+                };
+
+                let numberIndex = this.minFullSpins * 10 + Number(char);
+                for (let i = 0; i < numberIndex; i++) {
+                    let asStr = String(i);
+                    let displayNum = asStr[asStr.length - 1];
+                    column.digits.push(i);
+                }
+
+                this.digitColumns.push(column);
             }
+        }
+
+        spinDigitColumn(column) {
+            column.isSpun = true;
         }
 
         rollAll() {
             this.initDigits();
+
+            this.spinningIndex = 0;
+            this.spinDigitColumn(this.digitColumns[this.spinningIndex]);
+
+            this.spinInterval = this.$interval(() => {
+                this.spinningIndex++;
+                if (this.spinningIndex >= this.digitColumns.length) {
+                    this.$interval.cancel(this.spinInterval);
+                } else {
+                    this.spinDigitColumn(this.digitColumns[this.spinningIndex]);
+                }
+            }, this.spinDelay);
         }
 
         $onInit() {

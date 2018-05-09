@@ -1,5 +1,6 @@
 var NgPokieRandomizerTemplate = `
     <button ng-click="$ctrl.randomize()">Randomize</button>
+    <h3>Number: <strong ng-bind="$ctrl.randNum"></strong>
     <ng-pokie value="$ctrl.randNum"></ng-pokie>
 `;
 

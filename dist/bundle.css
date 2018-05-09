@@ -1,16 +1,21 @@
-.main-container {
+.ng-pokie-container {
   position: relative;
-  font-size: 100px;
-  font-family: sans-serif;
-  font-weight: bold;
   line-height: 1em;
   height: 1em;
   overflow-y: hidden; }
 
-.number-container {
-  position: absolute;
-  transition: all 5s ease-out; }
+.ng-pokie-digit-column-container {
+  display: inline-block;
+  width: 1em;
+  height: 1em; }
 
-.is-scrolled {
+.ng-pokie-digit-column {
+  position: absolute;
+  transition: all 3s ease-out;
+  margin: 0;
+  padding: 0;
+  list-style-type: none; }
+
+.is-spun {
   transform: translateY(calc(-100% + 1em)); }
 
