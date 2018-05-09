@@ -1,7 +1,7 @@
 var NgPokieRandomizerTemplate = `
     <button ng-click="$ctrl.randomize()">Randomize</button>
     <h3>Number: <strong ng-bind="$ctrl.randNum"></strong>
-    <ng-pokie value="$ctrl.randNum"></ng-pokie>
+    <ng-pokie value="$ctrl.randNum" min-columns="6"></ng-pokie>
 `;
 
 var NgPokieRandomizerComponent = {
@@ -13,7 +13,7 @@ var NgPokieRandomizerComponent = {
         }
 
         randomize() {
-            this.randNum = Math.floor(Math.random() * 10000);
+            this.randNum = Math.floor(Math.random() * 99999);
         }
     }
 };

@@ -26,9 +26,16 @@ export const NgPokieComponent = {
 
             let numAsString = String(this.value);
 
-            let colsAmount;
-            if (!this.minColumns) {
-                colsAmount = numAsString.length;
+            let colsAmount = this.minColumns || numAsString.length;
+            console.log('Min columns', this.minColumns, colsAmount);
+
+            let emptyColumnsAmount = 0;
+            if (numAsString.length < colsAmount) {
+                emptyColumnsAmount = colsAmount - numAsString.length;
+
+                for (let i = 0; i < emptyColumnsAmount; i++) {
+                    numAsString = 0 + numAsString;
+                }
             }
 
             for (let i = 0; i < colsAmount; i++) {
@@ -76,9 +83,7 @@ export const NgPokieComponent = {
                 }
             });
 
-            if (typeof this.value === 'number' || typeof this.value === 'string') {
-                this.rollAll();
-            }
+            this.initDigits();
         }
     }
 };
