@@ -27,7 +27,6 @@ export const NgPokieComponent = {
             let numAsString = String(this.value);
 
             let colsAmount = this.minColumns || numAsString.length;
-            console.log('Min columns', this.minColumns, colsAmount);
 
             let emptyColumnsAmount = 0;
             if (numAsString.length < colsAmount) {
