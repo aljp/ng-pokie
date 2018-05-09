@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
+const miniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const PROJECT_FOLDER = path.join(__dirname, '.');
 const NODE_MODULES = path.join(PROJECT_FOLDER, 'node_modules');
@@ -20,6 +21,9 @@ module.exports = {
     plugins: [
         new ngAnnotatePlugin({
             add: true
+        }),
+        new miniCssExtractPlugin({
+            filename: 'bundle.css'
         })
     ],
     mode: 'production',
@@ -42,6 +46,18 @@ module.exports = {
                     SRC_FOLDER
                 ],
                 loader: 'html-loader'
+            },
+            {
+                test: /\.scss$/,
+                include: [
+                    SRC_FOLDER
+                ],
+                use: [
+                    miniCssExtractPlugin.loader,
+                    'css-loader',
+                    'postcss-loader',
+                    'sass-loader'
+                ]
             }
         ]
     }
