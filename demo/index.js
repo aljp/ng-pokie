@@ -8,6 +8,7 @@ var NgPokieRandomizerComponent = {
     controller: class NgPokieRandomizerComponent {
         constructor() {
             this.randNum = 0;
+            this.digits = 5;
         }
 
         randomize() {
