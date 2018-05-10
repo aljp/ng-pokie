@@ -1,6 +1,6 @@
 {
   "name": "ng-pokie",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Slot machine style number spinner component for AngularJS. Pass it a number and watch it go.",
   "main": "dist/ngPokie.js",
   "scripts": {
@@ -28,6 +28,7 @@
     "game"
   ],
   "devDependencies": {
+    "angular": "1.6.10",
     "babel-core": "6.26.3",
     "babel-loader": "7.1.4",
     "babel-preset-env": "1.6.1",

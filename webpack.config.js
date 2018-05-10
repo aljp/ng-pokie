@@ -16,14 +16,16 @@ module.exports = {
     },
     output: {
         path: BUILD_FOLDER,
-        filename: 'ngPokie.js'
+        filename: 'ngPokie.js',
+        library: 'ng-pokie',
+        libraryTarget: 'umd'
     },
     plugins: [
         new ngAnnotatePlugin({
             add: true
         }),
         new miniCssExtractPlugin({
-            filename: 'bundle.css'
+            filename: 'ngPokie.css'
         })
     ],
     mode: 'production',
