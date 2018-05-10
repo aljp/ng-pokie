@@ -90,7 +90,7 @@ export const NgPokieComponent = {
 
         setColumnStyles() {
             this.columnStyles = {
-                'transition': `all ${this.spinAnimationTime}ms ease-out`
+                'transition': `transform ${this.spinAnimationTime}ms ease-out`
             };
         }
 
