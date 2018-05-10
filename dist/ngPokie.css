@@ -1,20 +1,23 @@
 .ng-pokie-container {
   position: relative;
   line-height: 1em;
-  height: 1em;
-  overflow-y: hidden; }
+  height: 1em; }
 
 .ng-pokie-digit-column-container {
   display: inline-block;
+  position: relative;
   width: 1em;
-  height: 1em; }
+  height: 100%;
+  overflow-y: hidden; }
 
 .ng-pokie-digit-column {
   position: absolute;
   margin: 0;
   padding: 0;
-  list-style-type: none; }
+  list-style-type: none;
+  left: 50%;
+  transform: translateX(-50%); }
 
 .is-spun {
-  transform: translateY(calc(-100% + 1em)); }
+  transform: translateX(-50%) translateY(calc(-100% + 1em)); }
 
