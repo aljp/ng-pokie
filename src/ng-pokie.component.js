@@ -5,7 +5,8 @@ export const NgPokieComponent = {
     template,
     bindings: {
         value: '<',
-        minColumns: '<'
+        minColumns: '<',
+        spinTime: '<'
     },
     controller: class NgPokieComponent {
         constructor($scope, $interval) {
@@ -75,6 +76,24 @@ export const NgPokieComponent = {
             }, this.spinDelay);
         }
 
+        initSpinTime() {
+            if (this.spinTime && !this.minColumns) {
+                this.spinDelay = 0;
+                this.spinAnimationTime = this.spinTime;
+            } else if (this.spinTime) {
+                this.spinDelay = this.spinTime / 2 / this.minColumns;
+                this.spinAnimationTime = this.spinTime / 2;
+            } else {
+                this.spinAnimationTime = this.spinTime;
+            }
+        }
+
+        setColumnStyles() {
+            this.columnStyles = {
+                'transition': `all ${this.spinAnimationTime}ms ease-out`
+            };
+        }
+
         $onInit() {
             this.$scope.$watch(() => this.value, (newVal, oldVal) => {
                 if (newVal !== oldVal) {
@@ -83,6 +102,10 @@ export const NgPokieComponent = {
             });
 
             this.initDigits();
+            this.initSpinTime();
+            this.setColumnStyles();
+
+            console.log('zzz', this.columnStyles, this.spinTime, this.spinAnimationTime);
         }
     }
 };
