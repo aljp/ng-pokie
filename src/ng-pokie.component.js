@@ -104,8 +104,6 @@ export const NgPokieComponent = {
             this.initDigits();
             this.initSpinTime();
             this.setColumnStyles();
-
-            console.log('zzz', this.columnStyles, this.spinTime, this.spinAnimationTime);
         }
     }
 };
