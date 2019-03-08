@@ -88,9 +88,10 @@ export const NgPokieComponent = {
             }
         }
 
-        setColumnStyles() {
-            this.columnStyles = {
-                'transition': `transform ${this.spinAnimationTime}ms ease-out`
+        getColumnStyles(digitColumn) {
+            return {
+                'transition': `transform ${this.spinAnimationTime}ms ease-out`,
+                'transform': `translateX(-50%) translateY(calc(-100% * ${digitColumn.digits.length}))`
             };
         }
 
@@ -103,7 +104,6 @@ export const NgPokieComponent = {
 
             this.initDigits();
             this.initSpinTime();
-            this.setColumnStyles();
         }
     }
 };
