@@ -89,9 +89,11 @@ export const NgPokieComponent = {
         }
 
         getColumnStyles(digitColumn) {
+            let columnsShiftAmount = digitColumn.isSpun ? digitColumn.digits.length - 1 : 0;
+
             return {
                 'transition': `transform ${this.spinAnimationTime}ms ease-out`,
-                'transform': `translateX(-50%) translateY(calc(-100% * ${digitColumn.digits.length}))`
+                'transform': `translateX(-50%) translateY(calc(-100% * ${columnsShiftAmount}))`
             };
         }
 
